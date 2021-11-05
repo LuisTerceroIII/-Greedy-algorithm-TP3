@@ -25,6 +25,12 @@ public class TeamsAndReferees {
 		int timesRefereeSelectedForTeam = getRefereeTimesSelectedForATeam(team, referee);
 		_teamsAndReferees[team][referee] = timesRefereeSelectedForTeam + 1;
 	}
+	
+	
+	public int[][] getTeamsAndReferees() {
+		return _teamsAndReferees;
+	}
+
 	private void verifyNotNegative(int i) {
 		if (i < 0) {
 			throw new IllegalArgumentException("Valor invalido para: " + i);

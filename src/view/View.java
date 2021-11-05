@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 
 import controller.Controller;
 
@@ -20,6 +21,7 @@ public class View {
 	private CalendarView _calendarView;
 	private ArrayList<String> _calendarData;
 	private Controller _controller;
+	private BarGraph graph;
 
 	public View(ArrayList<String> calendarData, Controller controller) {
 		super();
@@ -35,6 +37,8 @@ public class View {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					UIManager.setLookAndFeel(
+							UIManager.getSystemLookAndFeelClassName());
 					_frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,22 +70,43 @@ public class View {
 		JLabel title = new JLabel("Calendario Campeonato");
 		title.setFont(new Font("Tahoma", Font.PLAIN, 28));
 		title.setHorizontalAlignment(SwingConstants.CENTER);
-		title.setVerticalAlignment(SwingConstants.BOTTOM);
-		title.setBounds(107, 11, 488, 62);
+		title.setVerticalAlignment(SwingConstants.CENTER);
+		title.setBounds(119, 19, 356, 62);
 		_frame.getContentPane().add(title);
 
+		
+		JButton verGrafico = new JButton("Ver grafico");
+		verGrafico.setEnabled(false);
+		verGrafico.setBounds(514, 287, 156, 23);
+		_frame.getContentPane().add(verGrafico);
+		
 		JButton asignarReferis = new JButton("Asignar Referis");
+		asignarReferis.setBounds(514, 232, 156, 23);
+		_frame.getContentPane().add(asignarReferis);
+	
 		asignarReferis.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				_controller.assignReferees();
+				verGrafico.setEnabled(true);
 			}
 		});
-		asignarReferis.setBounds(266, 476, 156, 23);
-		_frame.getContentPane().add(asignarReferis);
+
+		
+		verGrafico.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				graph.showGraph();
+			}
+		});
 	}
+	
+	
 
 	public void updateCalendar(ArrayList<String> matches) {
 		_calendarView.updateCalendar(matches);
 
+	}
+	
+	public void setGraph(BarGraph graph) {
+		this.graph = graph;
 	}
 }

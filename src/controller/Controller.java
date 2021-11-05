@@ -3,10 +3,12 @@ package controller;
 import java.util.ArrayList;
 
 import MaxEquity.MaxEquity;
+import MaxEquity.Solution;
 import Tools.TransformData;
 import data.ReadJsonData;
 import model.Calendar;
 import model.Tournament;
+import view.BarGraph;
 import view.View;
 /*Metodos : assingReferees y updateCalendar se testean indirectamente,
  *  el primero en el paquete MaxEquity y el segundo en el paquete View*/
@@ -31,7 +33,11 @@ public class Controller {
 	}
 
 	public void assignReferees() {
-		Calendar calendar = MaxEquity.generateMaxEquityCalendar(_tournament);
+		
+		Solution solution = MaxEquity.generateMaxEquityCalendar(_tournament);
+		Calendar calendar = solution.getSolution();
+		BarGraph graph = new BarGraph(solution.getGraphData(), solution.getInstance().getTeams());
+		_view.setGraph(graph);
 		updateCalendar(calendar);
 	}
 

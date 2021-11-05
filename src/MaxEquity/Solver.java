@@ -93,6 +93,12 @@ public class Solver {
 		return _teamsAndReferees.getRefereeTimesSelectedForATeam(teamNumber, referee);
 	}
 	
+	
+	
+	TeamsAndReferees getTeamsAndReferees() {
+		return _teamsAndReferees;
+	}
+
 	void verifyRefereeNumber(int referee) {
 		if (!_instance.refereeExist(referee))
 			throw new IllegalArgumentException("Referi : " + referee + " no existe");

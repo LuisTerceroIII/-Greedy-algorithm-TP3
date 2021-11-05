@@ -23,8 +23,8 @@ public class MaxEquityTest {
 									.stream()
 									.forEach(match -> assertTrue(match.getReferee() == null)));
 	
-		
-		Calendar newCalendar = MaxEquity.generateMaxEquityCalendar(tournament);
+		Solution solution = MaxEquity.generateMaxEquityCalendar(tournament);
+		Calendar newCalendar = solution.getSolution();
 		
 		newCalendar.getMatchesDays()
 		.stream()

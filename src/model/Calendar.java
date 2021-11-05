@@ -48,7 +48,5 @@ public class Calendar {
 		Calendar other = (Calendar) obj;
 		return Objects.equals(_matchesDays, other._matchesDays);
 	}
-	
-
 
 }

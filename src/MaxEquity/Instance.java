@@ -12,7 +12,7 @@ import model.GameDay;
  * Los equipos son las filas, los referes las columnas,
  * en un campeonato donde n = 3, la matrix es 6*3.
  * */
-class Instance {
+public class Instance {
 	private ArrayList<String> _teams;
 	private ArrayList<Integer> _referees;
 	private  Calendar _calendar;
@@ -28,7 +28,7 @@ class Instance {
 		return (ArrayList<Integer>) _referees.clone();
 	}
 	
-	ArrayList<String> getTeams() {
+	public ArrayList<String> getTeams() {
 		return _teams;
 	}
 	

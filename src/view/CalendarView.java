@@ -20,7 +20,7 @@ public class CalendarView {
 
 		writteCalendar();
 		this._scrollPanel = new JScrollPane(_calendarData);
-		this._scrollPanel.setBounds(107, 92, 484, 373);
+		this._scrollPanel.setBounds(20, 92, 484, 373);
 	}
 	public CalendarView(ArrayList<String> matches) {
 		this._matches = matches;
@@ -30,7 +30,7 @@ public class CalendarView {
 
 		writteCalendar();
 		this._scrollPanel = new JScrollPane(_calendarData);
-		this._scrollPanel.setBounds(107, 92, 484, 373);
+		this._scrollPanel.setBounds(20, 92, 484, 373);
 	}
 
 	JScrollPane getScrollPanel() {
