@@ -44,14 +44,17 @@ private Instance _instance;
 	public void  chooseDiferentRefereeEachDayTest() {
 		Calendar calendar = _solver.resolve();
 		ArrayList<GameDay> matchesDays = calendar.getMatchesDays();
-		ArrayList<Integer> referees;
-		for (GameDay gameDay : matchesDays) {
-			referees = _instance.getReferees();
-			for (Match match : gameDay.getMatches()) {
-				assertTrue(referees.contains(match.getReferee()-1));
-				referees.remove(Integer.valueOf(match.getReferee()-1));
-			}
-		}
+
+		matchesDays.stream()
+					.forEach(gameDay -> {
+						var refereesCopy = _instance.getReferees();
+						gameDay.getMatches()
+								.stream()
+								.forEach(match -> {
+									assertTrue(refereesCopy.contains(match.getReferee()-1));
+									refereesCopy.remove(Integer.valueOf(match.getReferee()-1));
+								});
+					});
 	}
 	
 	@Test

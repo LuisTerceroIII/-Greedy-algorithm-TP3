@@ -10,9 +10,9 @@ public class Util {
 
 	public static ArrayList<Integer> zeroIndexReferees(ArrayList<Integer> referees) {
 		ArrayList<Integer> ret = new ArrayList<>();
-		for(int i = 0; i < referees.size() ; i++) {
-			ret.add(i);
-		}
+		referees.stream()
+				.map(referee -> referee - 1)
+				.forEach(ret::add);
 		return ret;
 	}
 }

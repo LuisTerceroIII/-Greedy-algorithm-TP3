@@ -3,6 +3,7 @@ package Tools;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.stream.IntStream;
 
 import org.junit.Test;
 
@@ -38,9 +39,13 @@ public class UtilTest {
 		Tournament tournament = ReadJsonData.readTournament("tournament.json");
 		ArrayList<Integer> referees = tournament.getReferees();
 		ArrayList<Integer> zeroIndexReferee = Util.zeroIndexReferees(referees);
-		for (int i = 0; i < zeroIndexReferee.size(); i++) {
-			assertTrue(zeroIndexReferee.get(i)+1 == referees.get(i));
-		}
+		
+		//Hago esto para tomar el indece de la listas.
+		IntStream.range(0,referees.size())
+				 .forEach(i -> {
+					 assertTrue(zeroIndexReferee.get(i)+1 == referees.get(i));
+				 });
+
 	}
 
 }

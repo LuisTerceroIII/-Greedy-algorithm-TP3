@@ -21,20 +21,19 @@ public class Solver {
 	public  Calendar resolve() {
 		Calendar ret = new Calendar();
 		ArrayList<GameDay> matchesDays = _instance.getMatchesDays();
-		int choosedReferee = 0;
-		ArrayList<Integer> refereesToSelect;
-
-		for (GameDay gameDay : matchesDays) {
-			refereesToSelect = _instance.getReferees();
-			
-			for (Match match : gameDay.getMatches()) {
-				choosedReferee = chooseReferee(match,refereesToSelect);
-				addRefereeToMatch(match, choosedReferee);
-				match.setReferee(choosedReferee + 1); //se suma uno para compesar convertir la lista de referees con index 0.
-				refereesToSelect.remove(Integer.valueOf(choosedReferee));//Agredo esto para que no se confunda el indice con el "nombre" del arbitro.
-			}
-		}
 		
+		matchesDays.stream()
+					.forEach(gameDay -> {
+						var refereesToSelect = _instance.getReferees();
+						gameDay.getMatches()
+								.stream()
+								.forEach(match -> {
+									var choosedReferee = chooseReferee(match,refereesToSelect);
+									addRefereeToMatch(match, choosedReferee);
+									match.setReferee(choosedReferee + 1); //se suma uno para compesar convertir la lista de referees con index 0.
+									refereesToSelect.remove(Integer.valueOf(choosedReferee));//Agredo esto para que no se confunda el indice con el "nombre" del arbitro.
+								});
+					});
 		ret.setMatchesDay(matchesDays);
 		return ret;
 	}
