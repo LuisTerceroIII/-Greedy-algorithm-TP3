@@ -16,7 +16,7 @@ public class Instance {
 	private ArrayList<String> _teams;
 	private ArrayList<Integer> _referees;
 	private  Calendar _calendar;
-
+	
 	public Instance(ArrayList<String> teams, ArrayList<Integer> referees, Calendar calendar) {
 		_teams = teams;
 		_referees = referees;

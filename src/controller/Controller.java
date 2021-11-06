@@ -8,7 +8,7 @@ import Tools.TransformData;
 import data.ReadJsonData;
 import model.Calendar;
 import model.Tournament;
-import view.BarGraph;
+import view.MaxEquityBarGraph;
 import view.View;
 /*Metodos : assingReferees y updateCalendar se testean indirectamente,
  *  el primero en el paquete MaxEquity y el segundo en el paquete View*/
@@ -33,10 +33,9 @@ public class Controller {
 	}
 
 	public void assignReferees() {
-		
 		Solution solution = MaxEquity.generateMaxEquityCalendar(_tournament);
 		Calendar calendar = solution.getSolution();
-		BarGraph graph = new BarGraph(solution.getGraphData(), solution.getInstance().getTeams());
+		MaxEquityBarGraph graph = new MaxEquityBarGraph(solution.getGraphData(), solution.getInstance().getTeams());
 		_view.setGraph(graph);
 		updateCalendar(calendar);
 	}

@@ -21,7 +21,7 @@ public class View {
 	private CalendarView _calendarView;
 	private ArrayList<String> _calendarData;
 	private Controller _controller;
-	private BarGraph graph;
+	private MaxEquityBarGraph graph;
 
 	public View(ArrayList<String> calendarData, Controller controller) {
 		super();
@@ -37,8 +37,7 @@ public class View {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					UIManager.setLookAndFeel(
-							UIManager.getSystemLookAndFeelClassName());
+					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					_frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -75,38 +74,36 @@ public class View {
 		_frame.getContentPane().add(title);
 
 		
-		JButton verGrafico = new JButton("Ver grafico");
-		verGrafico.setEnabled(false);
-		verGrafico.setBounds(514, 287, 156, 23);
-		_frame.getContentPane().add(verGrafico);
+		JButton showGraph = new JButton("Ver grafico");
+		showGraph.setEnabled(false);
+		showGraph.setBounds(514, 287, 156, 23);
+		_frame.getContentPane().add(showGraph);
 		
-		JButton asignarReferis = new JButton("Asignar Referis");
-		asignarReferis.setBounds(514, 232, 156, 23);
-		_frame.getContentPane().add(asignarReferis);
+		JButton assingReferee = new JButton("Asignar Referis");
+		assingReferee.setBounds(514, 232, 156, 23);
+		_frame.getContentPane().add(assingReferee);
 	
-		asignarReferis.addActionListener(new ActionListener() {
+		assingReferee.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				_controller.assignReferees();
-				verGrafico.setEnabled(true);
+				showGraph.setEnabled(true);
 			}
 		});
 
 		
-		verGrafico.addActionListener(new ActionListener() {
+		showGraph.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				graph.showGraph();
 			}
 		});
 	}
 	
-	
-
 	public void updateCalendar(ArrayList<String> matches) {
 		_calendarView.updateCalendar(matches);
 
 	}
 	
-	public void setGraph(BarGraph graph) {
+	public void setGraph(MaxEquityBarGraph graph) {
 		this.graph = graph;
 	}
 }

@@ -21,4 +21,4 @@ public class MaxEquity {
 		solution.setGraphData(solver.getTeamsAndReferees());
 		return solution;
 	}
-}
+} 

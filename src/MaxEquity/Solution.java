@@ -1,11 +1,11 @@
 package MaxEquity;
 
 import model.Calendar;
-import view.BarGraph;
+import view.MaxEquityBarGraph;
 
 public class Solution {
 
-	private BarGraph _graph;
+	private MaxEquityBarGraph _graph;
 	private Calendar _solution;
 	private TeamsAndReferees _graphData;
 	private Instance _instance;
@@ -16,20 +16,16 @@ public class Solution {
 		this._instance = _instance;
 	}
 
-	public BarGraph getGraph() {
+	public MaxEquityBarGraph getGraph() {
 		return _graph;
 	}
 
-	public void setGraph(BarGraph _graph) {
+	public void setGraph(MaxEquityBarGraph _graph) {
 		this._graph = _graph;
 	}
 
 	public Calendar getSolution() {
 		return _solution;
-	}
-
-	public void setSolution(Calendar _solution) {
-		this._solution = _solution;
 	}
 
 	public int[][] getGraphData() {
