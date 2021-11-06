@@ -20,8 +20,8 @@ public class Controller {
 	public Controller(String tournamentFile) {
 		_tournament = fetchTournamentData(tournamentFile);
 		Calendar calendar = _tournament.getCalendar();
-		ArrayList<String> calendarInString = TransformData.calendarToString(calendar);
-		_view = new View(calendarInString, this);
+		ArrayList<String> calendarToView = TransformData.calendarToString(calendar);
+		_view = new View(calendarToView, this);
 	} 
 
 	Tournament fetchTournamentData(String filename) {
@@ -35,9 +35,13 @@ public class Controller {
 	public void assignReferees() {
 		Solution solution = MaxEquity.generateMaxEquityCalendar(_tournament);
 		Calendar calendar = solution.getSolution();
-		MaxEquityBarGraph graph = new MaxEquityBarGraph(solution.getGraphData(), solution.getInstance().getTeams());
-		_view.setGraph(graph);
 		updateCalendar(calendar);
+		updateGraphData(solution.getGraphData(), solution.getInstance().getTeams());
+	}
+	
+	void updateGraphData(int[][] rawData, ArrayList<String> teams) {
+		MaxEquityBarGraph graph = new MaxEquityBarGraph(rawData,teams);
+		_view.setGraph(graph);
 	}
 
 	void updateCalendar(Calendar calendar) {
@@ -51,8 +55,4 @@ public class Controller {
 	Tournament getTournament() {
 		return _tournament;
 	}
-	
-	
-	
-
 }

@@ -28,4 +28,11 @@ public class ControllerTest {
 		Tournament  t = ReadJsonData.readTournament(jsonFile);
 		assertEquals(t, _controller.getTournament());
 	}
+	
+	@Test
+	public void testUpdateGraphData() {
+		assertTrue(_controller.getView().getGraph() == null);
+		_controller.updateGraphData(new int[6][3], _controller.getTournament().getTeams());
+		assertTrue(_controller.getView().getGraph() != null);
+	}
 }

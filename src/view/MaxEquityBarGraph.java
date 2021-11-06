@@ -12,25 +12,24 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 public class MaxEquityBarGraph {
 	
-	private int[][] _countOfRefereesForTeam;
+	private int[][] _countOfRefereesForTeams;
 	private ArrayList<String> _teams;
 	private JFreeChart _graph;
 	private DefaultCategoryDataset _data;
 	
-	public MaxEquityBarGraph(int[][] countOfRefereesForTeam, ArrayList<String> teams) {
+	public MaxEquityBarGraph(int[][] countOfRefereesForTeams, ArrayList<String> teams) {
 		super();
-		this._countOfRefereesForTeam = countOfRefereesForTeam;
+		this._countOfRefereesForTeams = countOfRefereesForTeams;
 		this._teams = teams;
 		_data = new DefaultCategoryDataset();
 		addDataToGraph();
 		createGraph();
-		
 	}
 
 	void addDataToGraph() {
-		for (int i = 0; i < _countOfRefereesForTeam.length; i++) {
-		    for (int j = 0; j < _countOfRefereesForTeam[i].length; j++) {
-			       _data.addValue(_countOfRefereesForTeam[i][j], "Referi "+ Integer.valueOf(j+1), _teams.get(i));
+		for (int i = 0; i < _countOfRefereesForTeams.length; i++) {
+		    for (int j = 0; j < _countOfRefereesForTeams[i].length; j++) {
+			       _data.addValue(_countOfRefereesForTeams[i][j], "Referi "+ Integer.valueOf(j+1), _teams.get(i));
 		    }
 		}
 	}
@@ -58,7 +57,7 @@ public class MaxEquityBarGraph {
 	}
 
 	int[][] getCountOfRefereesForTeam() {
-		return _countOfRefereesForTeam;
+		return _countOfRefereesForTeams;
 	}
 
 	ArrayList<String> getTeams() {

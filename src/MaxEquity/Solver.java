@@ -21,14 +21,13 @@ public class Solver {
 	public  Calendar resolve() {
 		Calendar ret = new Calendar();
 		ArrayList<GameDay> matchesDays = _instance.getMatchesDays();
-		
 		matchesDays.stream()
-					.forEach(gameDay -> {
-						var refereesToSelect = _instance.getReferees();
-						gameDay.getMatches()
-								.stream()
-								.forEach(match -> {
-									var choosedReferee = chooseReferee(match,refereesToSelect);
+				   .forEach(gameDay -> {
+					   var refereesToSelect = _instance.getReferees();
+					   gameDay.getMatches()
+							  .stream()
+							  .forEach(match -> {
+								  	var choosedReferee = chooseReferee(match,refereesToSelect);
 									addRefereeToMatch(match, choosedReferee);
 									match.setReferee(choosedReferee + 1); //se suma uno para compesar convertir la lista de referees con index 0.
 									refereesToSelect.remove(Integer.valueOf(choosedReferee));//Agredo esto para que no se confunda el indice con el "nombre" del arbitro.
@@ -38,22 +37,6 @@ public class Solver {
 		return ret;
 	}
 
-	/*
-	 * El criterio para elegir un réferi es: Para cada encuentro (Match) se elige al
-	 * réferi con menor promedió de elección entre los dos equipos y que se encuentre disponible,
-	 * es decir que no se halla elegido ya para otro partido en el mismo dia.
-	 *  Ejemplo: 
-	 *  Referis = {0,1,2} 
-	 *  -El Réferi “0” a arbitrado 2 veces al equipo “A”, y 3 veces al
-	 * equipo “B”, es decir el promedio de equidad es (2+3) /2 = 2,5 
-	 * -El Réferi “1” a arbitrado 1 veces al equipo “A”, y 2 veces al equipo “B”, es decir el
-	 * promedio de equidad es (1+2) /2 = 1,5 
-	 * -El Réferi “2” a arbitrado 4 veces al equipo “A”, y 3 veces al equipo “B”,
-	 *  es decir el promedio de equidad es (4+3)/2 = 3,5
-	 *  
-	 * Esto significa que el réferi elegido para este encuentro será el réferi “1”,
-	 * ya que ofrece un promedio de equidad mayor hasta ahora.
-	 */
 	//Si solo queda un referee retorna el referi 0.
 	 int chooseReferee(Match match, ArrayList<Integer> referees) {
 		int refereeSelected = 0;
@@ -72,8 +55,7 @@ public class Solver {
 		return refereeSelected;
 	}
 	
-	// Aumenta en 1 la cantidad de veces que un referee arbitrara para el equipo
-	// recibido. ----- Idealmente seria privado.
+	// Aumenta en 1 la cantidad de veces que un referee arbitrara para el equipo recibido.
 	void addRefereeToMatch(Match match, int referee) {
 		verifyRefereeNumber(referee);
 		verifyTeamName(match.getTeamA());
@@ -92,8 +74,6 @@ public class Solver {
 		int teamNumber = _instance.getIndexOfTeam(team);
 		return _teamsAndReferees.getRefereeTimesSelectedForATeam(teamNumber, referee);
 	}
-	
-	
 	
 	TeamsAndReferees getTeamsAndReferees() {
 		return _teamsAndReferees;

@@ -5,13 +5,6 @@ import java.util.ArrayList;
 import model.Calendar;
 import model.GameDay;
 
-
-/*
- * La instancia del problema son los equipos, los arbitros y una matriz 
- * que representa cuantas veces un arbitro a dirigido para cada equipo.
- * Los equipos son las filas, los referes las columnas,
- * en un campeonato donde n = 3, la matrix es 6*3.
- * */
 public class Instance {
 	private ArrayList<String> _teams;
 	private ArrayList<Integer> _referees;

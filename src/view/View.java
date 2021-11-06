@@ -15,6 +15,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
+import java.awt.Color;
+
 public class View {
 
 	private JFrame _frame;
@@ -62,6 +64,8 @@ public class View {
 		_frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		_frame.getContentPane().setLayout(null);
 		_frame.setResizable(false);
+		
+		_frame.getContentPane().setBackground(Color.white);
 
 		_calendarView = new CalendarView(_calendarData);
 		_frame.getContentPane().add(_calendarView.getScrollPanel());
@@ -106,4 +110,9 @@ public class View {
 	public void setGraph(MaxEquityBarGraph graph) {
 		this.graph = graph;
 	}
+
+	public MaxEquityBarGraph getGraph() {
+		return graph;
+	}
+	
 }
