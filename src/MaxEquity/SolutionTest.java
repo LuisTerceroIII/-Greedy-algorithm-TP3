@@ -37,7 +37,7 @@ public class SolutionTest {
 		assertTrue(s.getGraph() == null);
 		s.setGraph(generateGraph());
 		assertTrue(s.getGraph() != null);
-	}
+	} 
 	
 	@Test
 	public void testGetSolution() {

@@ -43,11 +43,11 @@ public class MaxEquityBarGraph {
 					PlotOrientation.VERTICAL,
 					true,
 					true,
-					true
+					false
 					);
 		
 	}
-	
+	 
 	void showGraph() {
 		ChartPanel panelGraph = new ChartPanel(_graph);
 		JFrame graphFrame = new JFrame("Graph");
@@ -58,7 +58,7 @@ public class MaxEquityBarGraph {
 
 	int[][] getCountOfRefereesForTeam() {
 		return _countOfRefereesForTeams;
-	}
+	} 
 
 	ArrayList<String> getTeams() {
 		return _teams;
