@@ -10,7 +10,7 @@ import model.Tournament;
 
 public class MaxEquityTest {
  
-	//Solver se testea indirectamente, se ejecuta cuando se llama a  MaxEquity.generateMaxEquityCalendar(tournament);
+	//Para test especificos de la resolucion ver clase SolverTest.  
 	@Test
 	public void assingRefereesTest() {
 		

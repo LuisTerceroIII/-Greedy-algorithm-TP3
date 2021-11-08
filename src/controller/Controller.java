@@ -41,7 +41,7 @@ public class Controller {
 	
 	void updateGraphData(int[][] rawData, ArrayList<String> teams) {
 		MaxEquityBarGraph graph = new MaxEquityBarGraph(rawData,teams);
-		_view.setGraph(graph);
+		_view.setGraph(graph); 
 	}
 
 	void updateCalendar(Calendar calendar) {
